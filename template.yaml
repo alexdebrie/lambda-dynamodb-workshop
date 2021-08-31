@@ -48,6 +48,26 @@ Resources:
           Action:
           - dynamodb:UpdateItem
           Resource: !GetAtt 'DynamoDBTable.Arn'
+  ViewCountsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/viewCounts.handler
+      Runtime: nodejs14.x
+      Events:
+        HTTP:
+          Type: Api
+          Properties:
+            Path: /counts/{tag}
+            Method: get
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref DynamoDBTable
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: 
+              !Ref DynamoDBTable
+
 
   DynamoDBTable:
     Type: "AWS::DynamoDB::Table"
