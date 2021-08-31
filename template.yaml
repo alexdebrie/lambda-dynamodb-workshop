@@ -16,6 +16,17 @@ Resources:
           Properties:
             Path: /
             Method: get
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref DynamoDBTable
+      Policies:
+      - Statement:
+        - Sid: DDBDescribeTablePolicy
+          Effect: Allow
+          Action:
+          - dynamodb:DescribeTable
+          Resource: !GetAtt 'DynamoDBTable.Arn'
+
   DynamoDBTable:
     Type: "AWS::DynamoDB::Table"
     Properties:
