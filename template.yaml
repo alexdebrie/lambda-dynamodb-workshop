@@ -67,7 +67,29 @@ Resources:
         - DynamoDBReadPolicy:
             TableName: 
               !Ref DynamoDBTable
-
+  StreamProcessorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/streamProcessor.handler
+      Runtime: nodejs14.x
+      Events:
+        DynamoDBStream:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt DynamoDBTable.StreamArn
+            StartingPosition: TRIM_HORIZON
+            BatchSize: 100
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref DynamoDBTable
+      Policies:
+      - Statement:
+        - Sid: DDBUpdateItemPolicy
+          Effect: Allow
+          Action:
+          - dynamodb:UpdateItem
+          Resource: !GetAtt 'DynamoDBTable.Arn'
 
   DynamoDBTable:
     Type: "AWS::DynamoDB::Table"
