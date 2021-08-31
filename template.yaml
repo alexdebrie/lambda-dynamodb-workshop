@@ -26,6 +26,28 @@ Resources:
           Action:
           - dynamodb:DescribeTable
           Resource: !GetAtt 'DynamoDBTable.Arn'
+  RecordVisitFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/recordVisit.handler
+      Runtime: nodejs14.x
+      Events:
+        HTTP:
+          Type: Api
+          Properties:
+            Path: /tag/{tag}
+            Method: get
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref DynamoDBTable
+      Policies:
+      - Statement:
+        - Sid: DDBUpdateItemPolicy
+          Effect: Allow
+          Action:
+          - dynamodb:UpdateItem
+          Resource: !GetAtt 'DynamoDBTable.Arn'
 
   DynamoDBTable:
     Type: "AWS::DynamoDB::Table"
