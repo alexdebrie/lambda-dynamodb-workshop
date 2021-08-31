@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-ddb-workshop
+
+Resources:
+  MainFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/main.handler
+      Runtime: nodejs14.x
+      Events:
+        HTTP:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+
+Outputs:
+  APIEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

@@ -1,0 +1,9 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "lambda-dynamodb-workshop"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-18tkax6769ccb"
+s3_prefix = "lambda-dynamodb-workshop"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
