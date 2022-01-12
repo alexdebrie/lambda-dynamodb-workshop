@@ -1,3 +1,4 @@
+_Prefer video? Check out [this recording](https://www.youtube.com/watch?v=SKmHrhUR9oY&ab_channel=AWSOnlineTechTalks) to see a live demostration of this workshop along with slides with background content on DynamoDB._
 
 ## DynamoDB + Lambda Workshop
 
