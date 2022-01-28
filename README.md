@@ -1,5 +1,6 @@
 _For a written, step-by-step guide to the code in this repository, use the [workshop guide here](https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Virtual-Workshop-DynamoDB-Lambda.pdf)._
-_Prefer video? Check out [this recording](https://www.youtube.com/watch?v=SKmHrhUR9oY&ab_channel=AWSOnlineTechTalks) to see a live demostration of this workshop along with slides with background content on DynamoDB._
+
+_Prefer video? Check out [this recording](https://www.youtube.com/watch?v=SKmHrhUR9oY&ab_channel=AWSOnlineTechTalks) to see a live demonstration of this workshop along with slides with background content on DynamoDB._
 
 ## DynamoDB + Lambda Workshop
 
