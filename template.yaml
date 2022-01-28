@@ -19,6 +19,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoDBTable
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
       Policies:
       - Statement:
         - Sid: DDBDescribeTablePolicy
@@ -41,6 +42,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoDBTable
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
       Policies:
       - Statement:
         - Sid: DDBUpdateItemPolicy
@@ -63,6 +65,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoDBTable
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
       Policies:
         - DynamoDBReadPolicy:
             TableName: 
@@ -83,6 +86,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoDBTable
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
       Policies:
       - Statement:
         - Sid: DDBUpdateItemPolicy
